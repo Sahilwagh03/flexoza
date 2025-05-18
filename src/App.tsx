@@ -31,8 +31,7 @@ function App() {
 
 const TargetAudienceBanner = () => {
   return (
-    <div className="bg-[#ea4832] text-white text-center py-2 px-14 rounded-sm mb-6 font-small
-      tracking-wider shadow-md text-lg uppercase font-black">
+    <div className="bg-[#ea4832] text-white text-center py-2 px-14 rounded-sm mb-6 font-small tracking-wider shadow-md text-lg uppercase font-black">
       car dealerships, coaches, micro company and consultants & other
     </div>
   );
@@ -40,31 +39,32 @@ const TargetAudienceBanner = () => {
 
 const VideoSection = () => {
   const videos = [
-    { id: 1, src: "/video/video1.mp4" },
-    { id: 2, src: "/video/video2.mp4" },
-    { id: 3, src: "/video/video3.mp4" },
-    { id: 4, src: "/video/video4.mp4" },
-    { id: 5, src: "/video/video5.mp4" },
-    { id: 6, src: "/video/video6.mp4" },
-  ];
+  { id: 1, embedUrl: "https://www.youtube.com/embed/OLK5GBlsLg0?controls=1&modestbranding=1&rel=0&showinfo=0" },
+  { id: 2, embedUrl: "https://www.youtube.com/embed/2kTZHJrRelY?controls=1&modestbranding=1&rel=0&showinfo=0" },
+  { id: 3, embedUrl: "https://www.youtube.com/embed/Q0LRNCLAtN0?controls=1&modestbranding=1&rel=0&showinfo=0" },
+  { id: 4, embedUrl: "https://www.youtube.com/embed/3MTbvTWLyqQ?controls=1&modestbranding=1&rel=0&showinfo=0" },
+  { id: 5, embedUrl: "https://www.youtube.com/embed/E-8AV1aQUXQ?controls=1&modestbranding=1&rel=0&showinfo=0" },
+  { id: 6, embedUrl: "https://www.youtube.com/embed/YvRT-sRkni4?controls=1&modestbranding=1&rel=0&showinfo=0" },
+];
+
 
   return (
     <section className="py-16">
-      <h2 className="text-4xl font-bold text-center mb-12 font-cormorant text-gray-800">Featured Videos</h2>
+      <h2 className="text-4xl font-bold text-center mb-12 font-cormorant text-gray-800">
+        Featured Videos
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {videos.map((video) => (
           <div key={video.id} className="relative group" style={{ aspectRatio: '9/16' }}>
-            <div className="absolute inset-0 bg-gray-100 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-              <video
-                className="w-full h-full object-cover"
-                muted
-                autoPlay
-                loop
-                poster={`/videos/thumbnails/video${video.id}.jpg`}
-              >
-                <source src={video.src} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+            <div className="absolute inset-0 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+              <iframe
+                className="w-full h-full"
+                src={video.embedUrl}
+                title={`YouTube video ${video.id}`}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
             </div>
           </div>
         ))}
